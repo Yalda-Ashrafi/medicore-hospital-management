@@ -14,7 +14,7 @@ body.auth-page {
 .auth-site-header .brand-logo { max-width: 220px; height: 68px; }
 .auth-register .auth-site-header .brand-logo { width: auto; max-width: 120px; height: auto; border-radius: 16px; }
 .auth-visual > .brand .brand-logo, .auth-mobile-brand .brand-logo { max-width: 250px; height: 72px; }
-.auth-site-header .auth-page-nav { width: 100%; justify-content: flex-start; margin: 0; }
+.auth-site-header .auth-page-nav { width: fit-content; max-width: 100%; justify-content: flex-start; margin: 0; }
 .auth-contact-link { color: #647286; font-size: 13px; font-weight: 650; }
 .auth-signup-callout { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; padding: 15px; border: 1px solid #dcecef; border-radius: 10px; background: #f7fcfc; color: #536176; font-size: 13px; font-weight: 600; }
 .auth-signup-callout .btn { flex: 0 0 auto; }
