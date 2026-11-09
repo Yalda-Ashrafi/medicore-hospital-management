@@ -74,7 +74,13 @@ body[data-page="contact"].staff-contact .contact-public-nav { display: none !imp
 body[data-page="contact"].staff-contact { min-height: 100vh; background: var(--background); }
 body[data-page="contact"].staff-contact .content > section { max-width: 100%; padding-top: 0; }
 @media (max-width: 575.98px) {
+  .contact-public-nav { align-items: stretch !important; flex-direction: column; }
+  .contact-public-nav .auth-page-nav { display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; justify-content: stretch; overflow: hidden; }
+  .contact-public-nav .auth-page-nav a { min-width: 0; min-height: 38px; padding: 0 3px; font-size: 10px; line-height: 1.1; text-align: center; }
   body[data-page="contact"]:not(.staff-contact):not(.patient-page) .content { padding: 18px 15px 32px; }
+}
+@media (max-width: 420px) {
+  .contact-public-nav .auth-page-nav a { font-size: 9px; }
 }
 .auth-mobile-brand { display: none; }
 .auth-heading { margin-bottom: 28px; }

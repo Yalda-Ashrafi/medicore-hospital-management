@@ -65,12 +65,15 @@
 .demo-footer a { color: #117f91; font-weight: 700; }
 @media (max-width: 760px) {
   .demo-topbar { align-items: flex-start; flex-direction: column; gap: 12px; }
-  .demo-account-nav { width: 100%; justify-content: flex-start; overflow-x: auto; }
-  .demo-account-nav a { min-height: 42px; padding: 0 14px; font-size: 13px; }
+  .demo-account-nav { display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; justify-content: stretch; overflow: hidden; }
+  .demo-account-nav a { min-width: 0; min-height: 38px; padding: 0 3px; font-size: 10px; line-height: 1.1; text-align: center; }
   .guest-hero { grid-template-columns: 1fr; gap: 22px; padding: 24px; }
   .guest-hero h1 { font-size: clamp(31px, 8vw, 42px); }
   .guest-hero-image { min-height: 220px; max-height: 300px; }
   .demo-section-heading { align-items: stretch; flex-direction: column; }
   .demo-search { min-width: 0; }
   .demo-footer { flex-direction: column; }
+}
+@media (max-width: 420px) {
+  .demo-account-nav a { font-size: 9px; }
 }
