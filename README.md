@@ -233,6 +233,7 @@ Mongoose creates these collections on the first successful write (MongoDB collec
 | `appointments` | `appointmentId` (generated, unique), `patient` (Patient reference), `doctor` (Doctor reference), `appointmentDate`, `appointmentTime`, `status` (`Pending`, `Confirmed`, `Cancelled`), timestamps |
 
 Live Website: https://medicore-hospital-management-ei30.onrender.com
+
 Project Demonstration Video: https://drive.google.com/file/d/1QbaxsOjM3sdVfDJALqgSu4kv542LQ_DQ/view?usp=sharing
 
 
