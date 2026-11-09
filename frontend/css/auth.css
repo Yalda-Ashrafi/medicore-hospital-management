@@ -222,8 +222,8 @@ body[data-page="contact"].staff-contact .content > section { max-width: 100%; pa
   .auth-simple .auth-form-wrap { padding: 23px 20px; }
   .auth-simple-header { margin-bottom: 28px; }
   .auth-site-header { gap: 12px; margin-bottom: 28px; }
-  .auth-site-header .auth-page-nav { width: 100%; justify-content: flex-start; overflow-x: auto; }
-  .auth-site-header .auth-page-nav a { padding: 0 14px; }
+  .auth-site-header .auth-page-nav { display: grid; width: 100%; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; justify-content: stretch; overflow: hidden; }
+  .auth-site-header .auth-page-nav a { min-width: 0; min-height: 38px; padding: 0 3px; font-size: 10px; line-height: 1.1; text-align: center; }
   .auth-visual { position: relative; min-height: auto; padding: 20px 22px 25px; }
   .auth-visual .brand { padding: 0; }
   .auth-hero { margin: 22px 0 0; padding: 0; }
@@ -248,6 +248,7 @@ body[data-page="contact"].staff-contact .content > section { max-width: 100%; pa
 @media (max-width: 420px) {
   .auth-fields { grid-template-columns: 1fr; }
   .auth-fields .field-wide { grid-column: auto; }
+  .auth-site-header .auth-page-nav a { font-size: 9px; }
   .auth-content { padding-right: 16px; padding-left: 16px; }
   .patient-page .topbar-right #malaysiaDate { display: none; }
   .patient-page .topbar-right .btn-outline-secondary { padding-right: 8px; padding-left: 8px; }

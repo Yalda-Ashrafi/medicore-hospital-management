@@ -250,7 +250,7 @@ test("contact page submits to Formspree and contact API validates legacy submiss
   for (const role of ["patient", "doctor", "admin", "receptionist"]) {
     assert.match(loginHtml, new RegExp(`<option value="${role}">`));
   }
-  assert.match(loginHtml, /Continue as guest/);
+  assert.match(loginHtml, /Continue as a guest/);
   assert.match(loginHtml, /Continue with Google/);
   assert.match(loginHtml, /Create Account/);
   assert.match(registerHtml, /id="patientRoleOption"/);

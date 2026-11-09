@@ -78,9 +78,9 @@ MediCore Community Hospital is the fictional name used by this prototype. It pro
    npm run dev
    ```
 
-5. Open [http://localhost:5000](http://localhost:5000) for sign-in. Choose **Continue as guest** for the demo, or sign in to a role-based workspace. The server serves the frontend and API on the same origin. Check [http://localhost:5000/api/health](http://localhost:5000/api/health) to verify the API is responding and see its MongoDB connection state.
+5. Open [http://localhost:5000](http://localhost:5000) for sign-in. Choose **Continue as a guest** for the demo, or sign in to a role-based workspace. The server serves the frontend and API on the same origin. Check [http://localhost:5000/api/health](http://localhost:5000/api/health) to verify the API is responding and see its MongoDB connection state.
 
-The sign-in and registration pages offer **Continue as guest**, which opens an interactive demo with fictional doctors, appointments, and each doctor's fixed room number. Preview changes are held in the browser and are not saved to the database.
+The sign-in and registration pages offer **Continue as a guest**, which opens an interactive demo with fictional doctors, appointments, and each doctor's fixed room number. Preview changes are held in the browser and are not saved to the database.
 
 ### Configure Google sign-in
 
