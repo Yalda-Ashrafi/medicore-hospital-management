@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register | MediCore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/auth.css" rel="stylesheet">
+</head>
+<body class="auth-page">
+  <main class="auth-layout auth-simple auth-register">
+    <section class="auth-content">
+      <div class="auth-form-wrap">
+        <header class="auth-site-header">
+          <a class="brand text-decoration-none text-primary p-0" href="login.html"><img class="brand-logo" src="images/medicore-logo-cropped.png" alt="MediCore Hospital"></a>
+          <nav class="auth-page-nav" aria-label="Main navigation">
+            <a href="demo.html">Guest preview</a>
+            <a href="login.html">Login</a>
+            <a href="register.html" aria-current="page">Create Account</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </header>
+        <div class="auth-heading"><div class="auth-step">Create Account</div><h1 id="accountHeading">Select your account type</h1><p id="accountDescription">Patients can register now. Doctor registrations are reviewed before access is enabled.</p></div>
+        <div id="registerChoices">
+          <a class="btn btn-outline-secondary google-auth-button mb-3" href="/api/auth/google" id="googleAuthButton"><span class="google-g" aria-hidden="true">G</span>Continue with Google <span class="small text-secondary">(patient)</span></a>
+          <div class="auth-divider">or choose an account type</div>
+          <div class="auth-role-options" id="authRoleOptions" role="group" aria-label="Choose account type">
+            <button class="auth-role-option" id="patientRoleOption" type="button" aria-pressed="false">
+              <i class="bi bi-person-heart" aria-hidden="true"></i><span><strong>Patient</strong><small>Manage your profile and appointments</small></span><i class="bi bi-arrow-right ms-auto" aria-hidden="true"></i>
+            </button>
+            <button class="auth-role-option" id="doctorRoleOption" type="button" aria-pressed="false">
+              <i class="bi bi-heart-pulse" aria-hidden="true"></i><span><strong>Doctor</strong><small>Submit a request for administrator approval</small></span><i class="bi bi-arrow-right ms-auto" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="alert alert-info auth-account-access-note"><strong>Administrator and receptionist accounts are provided by the hospital.</strong> <a href="login.html">Choose your role to Login</a>.</div>
+        </div>
+        <div class="alert alert-danger auth-error d-none" id="authError" role="alert"></div>
+        <form class="auth-form d-none" id="authForm" data-mode="register">
+          <button class="auth-back-link" id="backToRoleOptionsPatient" type="button"><i class="bi bi-arrow-left me-1"></i>Choose a different account type</button>
+          <div class="auth-role-note"><i class="bi bi-info-circle"></i><span>This creates a <strong>patient</strong> account. Doctor applicants must wait for administrator approval before receiving doctor access.</span></div>
+          <div class="auth-fields">
+            <div class="field-wide"><label class="form-label" for="fullName">Full name</label><input class="form-control" id="fullName" name="fullName" placeholder="As shown on your ID" required maxlength="120" autocomplete="name"></div>
+            <div><label class="form-label" for="email">Email address</label><input class="form-control" id="email" name="email" type="email" placeholder="you@example.com" required maxlength="160" autocomplete="email"></div>
+            <div><label class="form-label" for="phone">Phone number</label><input class="form-control" id="phone" name="phone" type="tel" placeholder="+60 12 345 6789" required maxlength="30" autocomplete="tel"></div>
+            <div><label class="form-label" for="age">Age</label><input class="form-control" id="age" name="age" type="number" min="0" max="125" placeholder="Your age" required inputmode="numeric"></div>
+            <div><label class="form-label" for="gender">Gender</label><select class="form-select" id="gender" name="gender" required><option value="">Select gender</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+            <div class="field-wide"><label class="form-label" for="address">Home address</label><input class="form-control" id="address" name="address" placeholder="Street, city, postcode" required maxlength="300" autocomplete="street-address"></div>
+            <div><label class="form-label" for="password">Create password</label><div class="input-group"><input class="form-control" id="password" name="password" type="password" placeholder="At least 12 characters" minlength="12" maxlength="128" required autocomplete="new-password"><button class="btn btn-light password-toggle" type="button" aria-label="Show password" aria-pressed="false"><i class="bi bi-eye"></i></button></div><div class="auth-password-note">Use at least 12 characters.</div></div>
+            <div><label class="form-label" for="confirmPassword">Confirm password</label><div class="input-group"><input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Enter it again" minlength="12" maxlength="128" required autocomplete="new-password"><button class="btn btn-light password-toggle" type="button" aria-label="Show password" aria-pressed="false"><i class="bi bi-eye"></i></button></div></div>
+          </div>
+          <button class="btn btn-primary auth-submit" type="submit"><span>Create patient account</span><i class="bi bi-arrow-right ms-2"></i></button>
+        </form>
+        <form class="auth-form d-none" id="doctorAuthForm" data-mode="register-doctor">
+          <button class="auth-back-link" id="backToRoleOptionsDoctor" type="button"><i class="bi bi-arrow-left me-1"></i>Choose a different account type</button>
+          <div class="auth-role-note"><i class="bi bi-shield-lock"></i><span>Your profile appears in the doctor directory as pending review. Doctor sign-in is enabled after administrator approval.</span></div>
+          <div class="auth-fields">
+            <div class="field-wide"><label class="form-label" for="doctorFullName">Full name</label><input class="form-control" id="doctorFullName" name="fullName" required maxlength="120" autocomplete="name"></div>
+            <div><label class="form-label" for="doctorEmail">Email address</label><input class="form-control" id="doctorEmail" name="email" type="email" required maxlength="160" autocomplete="email"></div>
+            <div><label class="form-label" for="doctorPhone">Phone number</label><input class="form-control" id="doctorPhone" name="phone" type="tel" required maxlength="30" autocomplete="tel"></div>
+            <div><label class="form-label" for="doctorSpecialization">Specialization</label><input class="form-control" id="doctorSpecialization" name="specialization" required maxlength="100" placeholder="e.g. Cardiology"></div>
+            <div><label class="form-label" for="doctorAvailability">Availability</label><input class="form-control" id="doctorAvailability" name="availability" required maxlength="160" placeholder="e.g. Mon–Fri, 9 AM–4 PM"></div>
+            <div><label class="form-label" for="doctorPassword">Create password</label><div class="input-group"><input class="form-control" id="doctorPassword" name="password" type="password" placeholder="At least 12 characters" minlength="12" maxlength="128" required autocomplete="new-password"><button class="btn btn-light password-toggle" type="button" aria-label="Show password" aria-pressed="false"><i class="bi bi-eye"></i></button></div><div class="auth-password-note">Use at least 12 characters.</div></div>
+            <div><label class="form-label" for="doctorConfirmPassword">Confirm password</label><div class="input-group"><input class="form-control" id="doctorConfirmPassword" name="confirmPassword" type="password" placeholder="Enter it again" minlength="12" maxlength="128" required autocomplete="new-password"><button class="btn btn-light password-toggle" type="button" aria-label="Show password" aria-pressed="false"><i class="bi bi-eye"></i></button></div></div>
+          </div>
+          <button class="btn btn-primary auth-submit" type="submit"><span>Submit doctor registration</span><i class="bi bi-arrow-right ms-2"></i></button>
+        </form>
+        <div class="auth-role-note d-none" id="doctorApplicationSubmitted" role="status"><i class="bi bi-check-circle"></i><span>Your profile is now in the doctor directory as pending review. You can sign in after an administrator approves your application. <a href="login.html">Return to Login</a>.</span></div>
+        <a class="auth-guest-link" href="demo.html"><i class="bi bi-eye me-2" aria-hidden="true"></i>Continue as guest</a>
+      </div>
+    </section>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-app-compat.js"></script><script src="https://www.gstatic.com/firebasejs/11.0.2/firebase-auth-compat.js"></script><script src="js/firebase-config.js"></script><script src="js/api.js"></script><script src="js/auth.js"></script><script src="js/auth-ui.js"></script><script src="js/google-auth.js"></script><script src="js/motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+const express = require("express");
+const asyncHandler = require("../middleware/asyncHandler");
+const { authenticate, requireRoles } = require("../middleware/authenticate");
+const databaseReady = require("../middleware/databaseReady");
+const validateObjectId = require("../middleware/validateObjectId");
+const validateJsonBody = require("../middleware/validateJsonBody");
+const controller = require("../controllers/authController");
+const googleController = require("../controllers/googleAuthController");
+
+const router = express.Router();
+router.get("/google", googleController.start);
+router.get("/google/callback", asyncHandler(googleController.callback));
+router.post("/register", validateJsonBody, databaseReady, asyncHandler(controller.registerPatient));
+router.post("/register-doctor", validateJsonBody, databaseReady, asyncHandler(controller.registerDoctor));
+router.post("/login", validateJsonBody, databaseReady, asyncHandler(controller.login));
+router.post("/forgot-password", validateJsonBody, databaseReady, asyncHandler(controller.requestPasswordReset));
+router.post("/reset-password", validateJsonBody, databaseReady, asyncHandler(controller.resetPassword));
+router.get("/doctor-applications", authenticate, requireRoles("admin"), databaseReady, asyncHandler(controller.listDoctorApplications));
+router.post("/doctor-applications/:id/approve", authenticate, requireRoles("admin"), validateObjectId, databaseReady, asyncHandler(controller.approveDoctorApplication));
+router.post("/doctor-applications/:id/reject", authenticate, requireRoles("admin"), validateObjectId, databaseReady, asyncHandler(controller.rejectDoctorApplication));
+router.get("/me", databaseReady, authenticate, asyncHandler(controller.currentUser));
+router.post("/logout", databaseReady, authenticate, asyncHandler(controller.logout));
+router.post("/change-password", databaseReady, authenticate, validateJsonBody, asyncHandler(controller.changePassword));
+router.post("/doctor-accounts", databaseReady, authenticate, requireRoles("admin"), validateJsonBody, asyncHandler(controller.createDoctorAccount));
+router.post("/doctor-accounts/:id", databaseReady, authenticate, requireRoles("admin"), validateObjectId, validateJsonBody, asyncHandler(controller.createExistingDoctorAccount));
+router.post("/patient-accounts/:id", databaseReady, authenticate, requireRoles("admin"), validateObjectId, validateJsonBody, asyncHandler(controller.createExistingPatientAccount));
+router.post("/receptionist-accounts", databaseReady, authenticate, requireRoles("admin"), validateJsonBody, asyncHandler(controller.createReceptionistAccount));
+router.post("/admin-accounts", databaseReady, authenticate, requireRoles("admin"), validateJsonBody, asyncHandler(controller.createAdminAccount));
+router.post("/google/complete-profile", databaseReady, authenticate, requireRoles("patient"), validateJsonBody, asyncHandler(googleController.completeProfile));
+
+module.exports = router;

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Patient dashboard | MediCore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/auth.css" rel="stylesheet">
+</head>
+<body class="patient-page">
+  <header class="topbar patient-topbar px-3 px-md-4">
+    <a class="brand text-decoration-none" href="patient.html"><img class="brand-logo" src="images/medicore-logo-cropped.png" alt="MediCore Hospital"></a>
+    <nav class="patient-page-nav" aria-label="Patient pages">
+      <a class="active" href="#home" aria-current="page">Overview</a>
+      <a href="#appointments">Appointments</a>
+      <a href="#doctors">Find a doctor</a>
+      <a href="#chat" id="careGuideNavLink">Care support</a>
+      <a href="#location">Location</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="topbar-right"><span class="text-secondary small" id="malaysiaDate"></span><div class="notification-center"><button class="btn btn-light notification-button" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notificationPanel"><i class="bi bi-bell" aria-hidden="true"></i><span class="notification-count d-none" aria-live="polite"></span></button><section class="notification-panel" id="notificationPanel" aria-label="Notifications" hidden><header class="notification-panel-header"><strong>Notifications</strong><button class="notification-mark-all" type="button">Mark all read</button></header><div class="notification-items" aria-live="polite"><p class="notification-empty">Loading notifications…</p></div></section></div><span class="patient-identity"><span class="avatar" id="patientAvatar">P</span><span class="small text-secondary" id="patientIdentity"></span></span><a class="btn btn-outline-secondary btn-sm" href="change-password.html"><i class="bi bi-key me-1"></i><span class="d-none d-sm-inline">Change password</span></a><button class="btn btn-outline-secondary btn-sm" id="logoutButton"><i class="bi bi-box-arrow-right me-1"></i>Sign out</button></div>
+  </header>
+  <main class="container py-4">
+    <div class="alert alert-warning d-none" id="notificationWarning" role="status"></div>
+    <div class="alert alert-info d-none profile-completion-notice" id="profileCompletionNotice" role="status"><div><strong>Finish setting up your patient profile</strong><p class="mb-2">You can explore the patient page now. Add a few details before requesting an appointment.</p><a class="btn btn-primary btn-sm" id="googleProfileLink" href="google-profile.html">Complete profile</a></div></div>
+    <section class="patient-welcome d-flex flex-wrap align-items-center justify-content-between gap-3" id="home"><div><div class="auth-kicker"><i class="bi bi-heart-pulse"></i> YOUR PERSONAL CARE SPACE</div><h1 id="welcomeHeading">Welcome</h1><p>Your personal profile and upcoming care, all in one place.</p></div><button class="btn" id="bookButton"><i class="bi bi-calendar-plus me-2"></i>Book appointment</button></section>
+    <div class="row g-3 mb-3">
+      <section class="col-lg-5"><div class="card-panel patient-panel"><button class="patient-panel-heading patient-profile-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#profileDetails" aria-expanded="false" aria-controls="profileDetails"><span class="patient-panel-icon"><i class="bi bi-person-vcard"></i></span><span class="text-start"><span class="section-title d-block">My profile</span><span class="section-subtitle d-block">Click to view your personal information</span></span><i class="bi bi-chevron-down ms-auto" aria-hidden="true"></i></button><div class="collapse" id="profileDetails"><p class="text-secondary">Loading your profile…</p></div></div></section>
+      <section class="col-lg-7" id="appointments"><div class="card-panel patient-panel"><div class="patient-panel-heading"><span class="patient-panel-icon"><i class="bi bi-calendar2-heart"></i></span><div><h2 class="section-title">My appointments</h2><p class="section-subtitle">Your scheduled visits and appointment requests</p></div></div><div id="appointmentsList"><p class="text-secondary">Loading your appointments…</p></div></div></section>
+    </div>
+    <section class="card-panel patient-panel mb-3" id="location"><div class="patient-panel-heading"><span class="patient-panel-icon"><i class="bi bi-geo-alt"></i></span><div><h2 class="section-title">Hospital location</h2><p class="section-subtitle mb-1">MediCore Community Hospital · Kuala Lumpur City Centre (KLCC), Kuala Lumpur</p><a href="https://www.google.com/maps/search/?api=1&amp;query=Kuala+Lumpur+City+Centre%2C+Kuala+Lumpur" target="_blank" rel="noopener noreferrer">View on map <i class="bi bi-box-arrow-up-right"></i></a></div></div></section>
+    <section class="card-panel patient-panel" id="doctors">
+      <div class="patient-directory-heading">
+        <div class="patient-panel-heading mb-0"><span class="patient-panel-icon"><i class="bi bi-search-heart"></i></span><div><h2 class="section-title">Find a doctor</h2><p class="section-subtitle">Search by doctor name, specialty, or a health concern.</p></div></div>
+        <label class="patient-search"><i class="bi bi-search" aria-hidden="true"></i><input id="doctorSearch" type="search" placeholder="e.g. ear, skin, heart, or doctor name" aria-label="Search doctors by name, specialty, or health concern"></label>
+      </div>
+      <div class="row g-3 mt-1" id="doctorDirectory" aria-live="polite"><div class="col-12"><p class="text-secondary">Loading doctors…</p></div></div>
+    </section>
+  </main>
+  <div class="care-chat-widget" id="chat">
+    <button class="care-chat-launcher" id="careChatLauncher" type="button" aria-expanded="false" aria-controls="careChatPanel"><i class="bi bi-chat-heart-fill" aria-hidden="true"></i><span>MediCore Assistant</span></button>
+    <section class="care-chat-panel" id="careChatPanel" aria-label="MediCore Assistant" role="dialog" aria-modal="false" aria-labelledby="careChatTitle" hidden>
+      <header class="care-chat-header"><div><strong id="careChatTitle">MediCore Assistant</strong><span>Specialty help · Reception chat</span></div><button class="care-chat-close" id="careChatClose" type="button" aria-label="Close MediCore Assistant"><i class="bi bi-x-lg"></i></button></header>
+      <div class="care-chat-disclaimer">I can explain specialties and show listed doctors, but I can’t diagnose. Reception can help if you’re unsure.</div>
+      <div class="care-chat-messages" id="careChatMessages" role="log" aria-live="polite"><article class="care-chat-bubble care-chat-bot">Hi! Tell me about your health concern, or ask what a specialty such as radiology does.</article></div>
+      <div class="care-chat-actions"><button class="btn btn-sm btn-outline-primary" type="button" id="startStaffChatButton"><i class="bi bi-person-lines-fill me-1"></i>Chat with reception</button><span id="careChatModeLabel">I can also connect you with reception.</span></div>
+      <form class="care-chat-compose" id="specialtyGuideForm"><label class="visually-hidden" for="specialtyGuideInput">Ask MediCore Assistant</label><input class="form-control" id="specialtyGuideInput" type="text" maxlength="500" placeholder="Type your question…" autocomplete="off" required><button class="btn btn-primary" type="submit" aria-label="Send message"><i class="bi bi-send"></i></button></form>
+    </section>
+  </div>
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><form id="bookingForm">
+    <div class="modal-header"><h2 class="modal-title fs-5">Book an appointment</h2><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+    <div class="modal-body"><div class="alert alert-danger d-none" id="bookingError" role="alert"></div>
+      <div class="mb-3"><label class="form-label" for="bookingConcern">What is your health issue or condition?</label><input class="form-control" id="bookingConcern" type="search" maxlength="500" placeholder="For example, an eye concern, tooth pain, or a check-up" autocomplete="off"><div class="form-text">Enter your condition to see doctors with matching specialties or care areas.</div></div>
+      <div class="alert alert-info d-none" id="noMatchingDoctorHelp" role="status">No matching doctor is listed for this condition. You can ask reception to find the right doctor for you.</div>
+      <div class="form-check d-none mb-3" id="receptionAssignmentOption"><input class="form-check-input" id="requestReceptionAssignment" type="checkbox"><label class="form-check-label" for="requestReceptionAssignment">Ask reception to find a suitable doctor</label><div class="form-text">Reception will review your condition, assign a doctor, and confirm your appointment.</div></div>
+      <div class="mb-3"><label class="form-label" for="bookingDoctor">Choose a doctor</label><select class="form-select" id="bookingDoctor" name="doctor" required><option value="">Loading doctors…</option></select><div class="form-text" id="bookingDoctorHelp" aria-live="polite">Describe a concern above to see matching doctors first.</div></div>
+      <div class="mb-3"><label class="form-label" for="bookingDate">Date</label><input class="form-control" id="bookingDate" name="appointmentDate" type="date" required></div>
+      <div><label class="form-label" for="bookingTime">Time</label><input class="form-control" id="bookingTime" name="appointmentTime" type="time" required></div>
+    </div>
+    <div class="modal-footer"><button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" type="submit">Request appointment</button></div>
+  </form></div></div></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="js/api.js"></script><script src="js/notifications.js"></script><script src="js/patient.js"></script><script src="js/motion.js"></script>
+</body>
+</html>

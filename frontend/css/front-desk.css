@@ -1,0 +1,13 @@
+.receipt-panel { max-width: 850px; }
+.receipt-sheet { max-width: 680px; margin: 0 auto; padding: 28px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+.receipt-logo { display: block; width: auto; max-width: 180px; height: 58px; object-fit: contain; }
+.receipt-label { margin-bottom: 4px; color: var(--muted); font-size: 11px; font-weight: 650; text-transform: uppercase; }
+.receipt-value { color: var(--ink); font-size: 14px; font-weight: 650; overflow-wrap: anywhere; }
+.receipt-payment { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.receipt-amount { color: var(--ink); font-size: 24px; }
+@media print {
+  body * { visibility: hidden !important; }
+  #receiptSheet, #receiptSheet * { visibility: visible !important; }
+  #receiptSheet { position: absolute; inset: 0; width: 100%; max-width: none; margin: 0; padding: 0; border: 0; border-radius: 0; }
+  .no-print { display: none !important; }
+}
