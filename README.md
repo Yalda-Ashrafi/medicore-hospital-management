@@ -5,6 +5,11 @@ A full-stack hospital management dashboard and REST API built for the Full-Stack
 ## Project overview
 
 MediCore Community Hospital is the fictional name used by this prototype. It provides role-based interfaces for patients, doctors, receptionists, and administrators. The browser dashboard is served by the Express application, while MongoDB Atlas stores accounts and operational records. The teal-and-white responsive interface includes summary cards, search and filters, record modals, analytics, and printable reports.
+![MediCore Dashboard]( https://github.com/Yalda-Ashrafi/medicore-hospital-management/blob/7710b0f74271eaae6e53fa02df63565266c93c48/screenshots/medicore.png )
+![MediCore Dashboard](https://github.com/Yalda-Ashrafi/medicore-hospital-management/blob/7710b0f74271eaae6e53fa02df63565266c93c48/screenshots/medicore2.png)​‌
+![Patient Management](https://github.com/Yalda-Ashrafi/medicore-hospital-management/blob/7710b0f74271eaae6e53fa02df63565266c93c48/screenshots/medicore3.png)​‌
+![MediCore Dashboard](https://github.com/Yalda-Ashrafi/medicore-hospital-management/blob/7710b0f74271eaae6e53fa02df63565266c93c48/screenshots/medicore5.png)
+
 
 ## Features
 
