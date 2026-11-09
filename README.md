@@ -232,17 +232,9 @@ Mongoose creates these collections on the first successful write (MongoDB collec
 | `doctors` | `doctorId` (generated, unique), `fullName`, `specialization`, `roomNumber`, `phone`, `email` (unique), `availability`, timestamps |
 | `appointments` | `appointmentId` (generated, unique), `patient` (Patient reference), `doctor` (Doctor reference), `appointmentDate`, `appointmentTime`, `status` (`Pending`, `Confirmed`, `Cancelled`), timestamps |
 
-## Screenshots
+Live Website: https://medicore-hospital-management-ei30.onrender.com
+Project Demonstration Video: https://drive.google.com/file/d/1QbaxsOjM3sdVfDJALqgSu4kv542LQ_DQ/view?usp=sharing
 
-Save genuine captures in `screenshots/` after running the application with sample data:
-
-- `screenshots/dashboard.png`
-- `screenshots/patients.png`
-- `screenshots/doctors.png`
-- `screenshots/appointments.png`
-- `screenshots/postman-crud.png`
-
-Do not include database credentials or real patient information in screenshots. See [`screenshots/README.md`](./screenshots/README.md) for capture notes.
 
 ## API testing with Postman or Thunder Client
 
